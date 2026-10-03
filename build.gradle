@@ -1,0 +1,66 @@
+// OpenOnyx 反编译工程
+//
+//   src/main/java/          客户端源码（反编译 + 反混淆 + 手工修复）
+//   libs/onyx-runtime.jar   原 jar 里的其余内容：Minecraft 1.8.9（含被客户端挂钩的类）、OptiFine、
+//                           第三方库、资源、natives —— 原样保留，只按映射改了对客户端类的引用
+//
+// 构建产物 build/libs/OpenOnyx.jar 的结构和原版 OpenOnyx.jar 一致（客户端类 + 运行时内容），
+// 主类 OpenOnyxLauncher。
+
+plugins {
+    id 'java'
+}
+
+group = 'client.onyx'
+version = 'decompiled'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
+repositories {
+    // 不需要任何在线依赖，全部来自 libs/
+}
+
+dependencies {
+    implementation files('libs/onyx-runtime.jar')
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release = 21
+    // 反编译代码里有大量原始类型（混淆器伪造/抹掉了泛型签名），关掉这些警告
+    options.compilerArgs += ['-proc:none', '-nowarn', '-Xlint:none']
+}
+
+jar {
+    archiveFileName = 'OpenOnyx.jar'
+    manifest {
+        attributes 'Main-Class': 'OpenOnyxLauncher'
+    }
+    // 打进运行时内容（MC、库、资源、natives），和原版 jar 一样做成一个可直接运行的 jar
+    from(zipTree(file('libs/onyx-runtime.jar'))) {
+        exclude 'META-INF/MANIFEST.MF', 'META-INF/*.SF', 'META-INF/*.RSA', 'META-INF/*.DSA'
+    }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    zip64 = true
+}
+
+// gradlew runClient：把 jar 放进 run/ 再启动（启动器会在 jar 旁边创建 onyx-game/ 作为游戏目录）
+def runDir = file('run')
+
+tasks.register('installClient', Copy) {
+    dependsOn tasks.named('jar')
+    from tasks.named('jar').flatMap { it.archiveFile }
+    into runDir
+}
+
+tasks.register('runClient', JavaExec) {
+    group = 'application'
+    description = '在 run/ 目录下启动客户端'
+    dependsOn tasks.named('installClient')
+    classpath = files(new File(runDir, 'OpenOnyx.jar'))
+    mainClass = 'OpenOnyxLauncher'
+    workingDir = runDir
+}
