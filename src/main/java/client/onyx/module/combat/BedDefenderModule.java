@@ -223,16 +223,16 @@ public class BedDefenderModule extends Module {
 
    private Comparator<BedDefenderModule.PosBlockRecord> getComparator4() {
       switch ((BedDefenderModule.BottomUpFurthestEnum)this.valueSettingSub113.lambda15()) {
-         case PATTERN:
+         case BOTTOM_UP:
 
             return Comparator.<BedDefenderModule.PosBlockRecord>comparingInt(var0 -> var0.pos().getY())
                .thenComparing(Comparator.comparingDouble(BedDefenderModule.PosBlockRecord::distance).reversed())
                .thenComparingInt(BedDefenderModule.PosBlockRecord::index);
-         case NEAREST:
-            return Comparator.comparingDouble(BedDefenderModule.PosBlockRecord::distance).reversed().thenComparingInt(BedDefenderModule.PosBlockRecord::index);
          case FURTHEST:
+            return Comparator.comparingDouble(BedDefenderModule.PosBlockRecord::distance).reversed().thenComparingInt(BedDefenderModule.PosBlockRecord::index);
+         case NEAREST:
             return Comparator.comparingDouble(BedDefenderModule.PosBlockRecord::distance).thenComparingInt(BedDefenderModule.PosBlockRecord::index);
-         case BOTTOM_UP:
+         case PATTERN:
             return Comparator.comparingInt(BedDefenderModule.PosBlockRecord::index);
          default:
             throw new MatchException(null, null);

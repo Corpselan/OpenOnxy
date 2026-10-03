@@ -29,9 +29,9 @@ public enum UnboundedForwardEnum {
          case UNBOUNDED:
 
             return DOUBLE_ARRAY;
-         case SEGMENT_01:
-            return DOUBLE_ARRAY3;
          case FORWARD:
+            return DOUBLE_ARRAY3;
+         case SEGMENT_01:
             return DOUBLE_ARRAY2;
          default:
             throw new MatchException(null, null);

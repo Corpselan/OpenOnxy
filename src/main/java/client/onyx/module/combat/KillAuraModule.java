@@ -101,16 +101,16 @@ public class KillAuraModule extends Module {
 
    private boolean isYawPitchRecord(YawPitchRecord var1) {
       switch ((KillAuraModule.OffAngleEnum)this.valueSettingSub113.lambda15()) {
-         case RAYCAST:
+         case OFF:
 
             return true;
-         case OFF:
+         case ANGLE:
             if (this.cls.getFloat97(var1) <= this.valueSettingSub104.getFloat5()) {
                return true;
             }
 
             return false;
-         case ANGLE:
+         case RAYCAST:
             return this.cls.isEntity6(this.entityLivingBase2, var1, this.valueSettingSub103.lambda15());
          default:
             throw new MatchException(null, null);
@@ -127,16 +127,16 @@ public class KillAuraModule extends Module {
          return false;
       } else {
          switch ((KillAuraModule.AlwaysHoldEnum)this.valueSettingSub114.lambda15()) {
-            case TOGGLE:
+            case ALWAYS:
 
                return true;
-            case ALWAYS:
+            case HOLD:
                if (this.noneValueSetting2.isEnabled19() && this.bool3) {
                   return true;
                }
 
                return false;
-            case HOLD:
+            case TOGGLE:
                if (this.noneValueSetting2.isEnabled19() && !this.bool2) {
                   return false;
                }

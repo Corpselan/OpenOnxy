@@ -159,13 +159,13 @@ public class GuiComponentSub4 extends GuiComponent {
 
    private int getInt63(client.onyx.gui.Cls2 var1) {
       switch (this.filledTonalEnum) {
-         case OUTLINED:
+         case FILLED:
 
             return var1.getPrimaryOnPrimaryRecord().primary();
-         case FILLED:
-            return var1.getPrimaryOnPrimaryRecord().secondaryContainer();
-         case TEXT:
          case TONAL:
+            return var1.getPrimaryOnPrimaryRecord().secondaryContainer();
+         case OUTLINED:
+         case TEXT:
             return 0;
          default:
             throw new MatchException(null, null);
@@ -174,13 +174,13 @@ public class GuiComponentSub4 extends GuiComponent {
 
    private int getInt62(client.onyx.gui.Cls2 var1) {
       switch (this.filledTonalEnum) {
-         case OUTLINED:
+         case FILLED:
 
             return var1.getPrimaryOnPrimaryRecord().onPrimary();
-         case FILLED:
-            return var1.getPrimaryOnPrimaryRecord().onSecondaryContainer();
-         case TEXT:
          case TONAL:
+            return var1.getPrimaryOnPrimaryRecord().onSecondaryContainer();
+         case OUTLINED:
+         case TEXT:
             return var1.getPrimaryOnPrimaryRecord().primary();
          default:
             throw new MatchException(null, null);

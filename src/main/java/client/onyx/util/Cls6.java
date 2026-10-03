@@ -104,14 +104,14 @@ public final class Cls6 {
 
    private String getString4() {
       switch (this.itemGroupEnum) {
-         case NAME:
+         case ITEM:
 
             return this.int_ == -1
                ? getStringForItem(this.item)
                : new StringBuilder().insert(0, getStringForItem(this.item)).append('#').append(this.int_).toString();
          case GROUP:
             return '@' + this.swordAxeEnum.name();
-         case ITEM:
+         case NAME:
             return '~' + this.string;
          default:
             throw new MatchException(null, null);
@@ -151,12 +151,12 @@ public final class Cls6 {
 
    public ItemStack getItemStack() {
       switch (this.itemGroupEnum) {
-         case NAME:
+         case ITEM:
             return new ItemStack(this.item, 1, this.int_ == -1 ? 0 : this.int_);
          case GROUP:
 
             return this.swordAxeEnum.getItemStack();
-         case ITEM:
+         case NAME:
             return this.getItemStack2();
          default:
             throw new MatchException(null, null);
@@ -174,13 +174,13 @@ public final class Cls6 {
 
    public String getString3() {
       switch (this.itemGroupEnum) {
-         case NAME:
+         case ITEM:
 
             String var2 = this.getString();
             return this.int_ == -1 ? var2 : new StringBuilder().insert(0, var2).append(" #").append(this.int_).toString();
          case GROUP:
             return this.swordAxeEnum.getString();
-         case ITEM:
+         case NAME:
             return new StringBuilder().insert(0, "*").append(this.string).append("*").toString();
          default:
             throw new MatchException(null, null);
@@ -194,12 +194,12 @@ public final class Cls6 {
    public boolean isItemStack(ItemStack var1) {
       if (var1 != null && var1.getItem() != null) {
          switch (this.itemGroupEnum) {
-            case NAME:
+            case ITEM:
 
                return var1.getItem() == this.item && (this.int_ == -1 || var1.getMetadata() == this.int_);
             case GROUP:
                return this.swordAxeEnum.isItemStack2(var1);
-            case ITEM:
+            case NAME:
                return getStringForItem2(var1.getItem()).contains(this.string);
             default:
                throw new MatchException(null, null);
@@ -248,34 +248,34 @@ public final class Cls6 {
 
       public boolean isItem(Item var1) {
          switch (this) {
-            case TOOL:
+            case SWORD:
 
                return var1 instanceof ItemSword;
             case AXE:
                return var1 instanceof ItemAxe;
-            case FOOD:
+            case PICKAXE:
                return var1 instanceof ItemPickaxe;
-            case BAD_POTION:
+            case SHOVEL:
                return var1 instanceof ItemSpade;
-            case SWORD:
+            case HOE:
                return var1 instanceof ItemHoe;
-            case ARMOR:
+            case TOOL:
                if (!(var1 instanceof ItemTool) && !(var1 instanceof ItemHoe) && !(var1 instanceof ItemShears)) {
                   return false;
                }
 
                return true;
-            case ANY:
+            case ARMOR:
                return var1 instanceof ItemArmor;
             case BLOCK:
                return var1 instanceof ItemBlock;
-            case SHOVEL:
+            case FOOD:
                return var1 instanceof ItemFood;
-            case HOE:
-               return var1 instanceof ItemPotion;
             case POTION:
+               return var1 instanceof ItemPotion;
+            case BAD_POTION:
                return false;
-            case PICKAXE:
+            case ANY:
                return true;
             default:
                throw new MatchException(null, null);
@@ -284,20 +284,20 @@ public final class Cls6 {
 
       public ItemStack getItemStack() {
          Object var2 = switch (this) {
-            case TOOL -> {
+            case SWORD -> {
                yield Items.iron_sword;
 
             }
             case AXE -> Items.iron_axe;
-            case FOOD -> Items.iron_pickaxe;
-            case BAD_POTION -> Items.iron_shovel;
-            case SWORD -> Items.iron_hoe;
-            case ARMOR -> Items.iron_pickaxe;
-            case ANY -> Items.iron_chestplate;
+            case PICKAXE -> Items.iron_pickaxe;
+            case SHOVEL -> Items.iron_shovel;
+            case HOE -> Items.iron_hoe;
+            case TOOL -> Items.iron_pickaxe;
+            case ARMOR -> Items.iron_chestplate;
             case BLOCK -> Item.getItemFromBlock(Blocks.stone);
-            case SHOVEL -> Items.bread;
-            case HOE, POTION -> Items.potionitem;
-            case PICKAXE -> Items.book;
+            case FOOD -> Items.bread;
+            case POTION, BAD_POTION -> Items.potionitem;
+            case ANY -> Items.book;
          };
          return var2 == null ? null : new ItemStack((Item)var2);
       }

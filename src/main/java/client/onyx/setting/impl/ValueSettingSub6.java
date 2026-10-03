@@ -157,9 +157,9 @@ extends ValueSetting<Integer> {
     }
 
     public ValueSettingSub6 getValueSettingSub63(double d) {
-        ValueSettingSub6 valueSettingSub6 = this;
-        return valueSettingSub6.getValueSettingSub64(() -> {
-            Cls cls = Cls.getClsForInt(valueSettingSub6.intSupplier.getAsInt());
+        IntSupplier base = this.intSupplier;
+        return this.getValueSettingSub64(() -> {
+            Cls cls = Cls.getClsForInt(base.getAsInt());
             return cls.getCls2(Util2.getDoubleForDouble(cls.getDouble() + d)).getInt();
         });
     }

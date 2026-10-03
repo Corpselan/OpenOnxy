@@ -108,8 +108,8 @@ public final class Util20 {
                   yield null;
 
                }
-               case TEXT -> cursor;
-               case POINTER -> cursor2;
+               case POINTER -> cursor;
+               case TEXT -> cursor2;
             };
 
             try {

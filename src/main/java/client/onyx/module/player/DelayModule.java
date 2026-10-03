@@ -539,29 +539,29 @@ public class DelayModule extends Module {
 
    private BlockPos getBlockPos11(BlockPos var1) {
       switch ((DelayModule.OffOnEnum)this.valueSettingSub113.lambda15()) {
-         case ON:
+         case OFF:
 
             return null;
-         case FALLING:
+         case ON:
             if (!this.valueSettingSub9.lambda15() || !isEnabled120() && !this.bool4) {
                return getBlockPosForBlockPos2(var1, this.int_5);
             }
 
             return null;
-         case OFF:
+         case FALLING:
             if (MINECRAFT.thePlayer.motionY < 0.2) {
                return getBlockPosForBlockPos2(var1, this.int_5);
             }
 
             return null;
-         case HYPIXEL2:
+         case HYPIXEL:
             if (MINECRAFT.thePlayer.motionY == -0.15233518685055708 && this.int_3 >= 2) {
                this.int_3 = 0;
                return getBlockPosForBlockPos2(var1, this.int_6);
             }
 
             return getBlockPosForBlockPos2(var1, this.int_6 - 1);
-         case HYPIXEL:
+         case HYPIXEL2:
             if (!isEnabled120() && !this.bool4) {
                BlockPos var2;
                if ((var2 = this.getBlockPos9()) != null) {

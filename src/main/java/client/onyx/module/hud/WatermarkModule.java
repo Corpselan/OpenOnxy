@@ -493,7 +493,7 @@ public final class WatermarkModule extends Module {
 
                var1.handleOpticalWeightRecord9(Util2.OPTICAL_WEIGHT_RECORD9, this.kindTextRecord2.text(), var7, var4 / 2.0F, var2.onSurface());
                break;
-            case MUSIC:
+            case TOGGLE:
                this.handleSampler027(var1, var2, var7, var4 / 2.0F);
                var10000 = var1;
                break;
@@ -501,7 +501,7 @@ public final class WatermarkModule extends Module {
                this.handleSampler028(var1, var2, var7, var3, var4);
                var10000 = var1;
                break;
-            case TOGGLE:
+            case MUSIC:
             default:
                var10000 = var1;
          }
@@ -574,7 +574,7 @@ public final class WatermarkModule extends Module {
          case IDLE:
 
             return var1.getFloat17(Util2.OPTICAL_WEIGHT_RECORD9, var2.text());
-         case MUSIC:
+         case TOGGLE:
             float var3 = Math.min(var1.getFloat17(Util2.OPTICAL_WEIGHT_RECORD9, var2.text()), 90.0F);
             if (var2.badge().isEmpty()) {
                return var3;
@@ -586,7 +586,7 @@ public final class WatermarkModule extends Module {
                   54.0F, var1.getFloat17(Util2.OPTICAL_WEIGHT_RECORD8, var2.badge()) + 8.0F + var1.getFloat17(Util2.OPTICAL_WEIGHT_RECORD9, var2.text())
                )
                + 4.0F;
-         case TOGGLE:
+         case MUSIC:
             return Math.min(var1.getFloat17(Util2.OPTICAL_WEIGHT_RECORD9, var2.text()), 90.0F) + 6.0F + 10.0F;
          default:
             throw new MatchException(null, null);

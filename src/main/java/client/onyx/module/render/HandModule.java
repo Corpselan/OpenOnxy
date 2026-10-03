@@ -175,17 +175,17 @@ public final class HandModule extends Module {
 
    private static float getFloatForLinearSmoothEnum(HandModule.LinearSmoothEnum var0, float var1) {
       switch (var0) {
-         case SQRT:
+         case LINEAR:
 
             return var1;
-         case EASE_OUT:
+         case SMOOTH:
             return var1 * var1 * (3.0F - 2.0F * var1);
-         case LINEAR:
+         case EASE_OUT:
             float var6 = (1.0F - var1) * (1.0F - var1);
             return 1.0F - var6;
-         case SMOOTH:
-            return (float)Math.sin(var1 * Math.PI / 2.0);
          case SIN:
+            return (float)Math.sin(var1 * Math.PI / 2.0);
+         case SQRT:
             return (float)Math.sqrt(var1);
          default:
             throw new MatchException(null, null);

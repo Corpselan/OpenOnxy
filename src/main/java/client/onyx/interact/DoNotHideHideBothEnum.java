@@ -26,16 +26,16 @@ public enum DoNotHideHideBothEnum implements DisplayNamed, Runnable, MinecraftAc
    @Override
    public void run() {
       switch (this) {
-         case HIDE_BOTH:
+         case DO_NOT_HIDE:
 
             MINECRAFT.thePlayer.swingItem();
             return;
-         case HIDE_SERVER:
+         case HIDE_BOTH:
             return;
          case HIDE_CLIENT:
             MINECRAFT.getNetHandler().addToSendQueue(new C0APacketAnimation());
             return;
-         case DO_NOT_HIDE:
+         case HIDE_SERVER:
             MINECRAFT.thePlayer.swingItemClientOnly();
       }
    }

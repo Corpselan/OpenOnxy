@@ -72,12 +72,12 @@ public final class Socks5ProxyHandler extends ChannelDuplexHandler {
 
    private boolean isChannelHandlerContext4(ChannelHandlerContext var1, ByteBuf var2) {
       switch (this.connectingGreetingEnum) {
-         case CONNECT:
+         case GREETING:
 
             return this.isChannelHandlerContext3(var1, var2);
-         case CONNECTED:
+         case AUTH:
             return this.isChannelHandlerContext2(var1, var2);
-         case CONNECTING:
+         case CONNECT:
             return this.isChannelHandlerContext(var1, var2);
          default:
             return false;

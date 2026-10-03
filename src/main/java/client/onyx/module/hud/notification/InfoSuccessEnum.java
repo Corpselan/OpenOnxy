@@ -23,14 +23,14 @@ public enum InfoSuccessEnum implements DisplayNamed {
 
    public String getString3() {
       switch (this) {
-         case SUCCESS:
+         case INFO:
 
             return "\ue88e";
-         case ERROR:
+         case SUCCESS:
             return "\ue5ca";
-         case INFO:
-            return "\ue002";
          case WARNING:
+            return "\ue002";
+         case ERROR:
             return "\ue001";
          default:
             throw new MatchException(null, null);
@@ -39,14 +39,14 @@ public enum InfoSuccessEnum implements DisplayNamed {
 
    public int getInt4(PrimaryOnPrimaryRecord var1) {
       switch (this) {
-         case SUCCESS:
+         case INFO:
 
             return var1.primary();
-         case ERROR:
+         case SUCCESS:
             return var1.tertiary();
-         case INFO:
-            return var1.secondary();
          case WARNING:
+            return var1.secondary();
+         case ERROR:
             return var1.error();
          default:
             throw new MatchException(null, null);

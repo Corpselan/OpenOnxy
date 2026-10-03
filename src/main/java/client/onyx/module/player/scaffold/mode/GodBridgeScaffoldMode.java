@@ -54,9 +54,9 @@ public class GodBridgeScaffoldMode extends ScaffoldMode implements Iface {
          case SNEAK:
             int var4 = this.valueSettingSub3.getInt4();
             return new JumpSneakTimeRecord(false, var4, false, false);
-         case BACKWARDS:
-            return new JumpSneakTimeRecord(false, 0, true, false);
          case STOP_INPUT:
+            return new JumpSneakTimeRecord(false, 0, true, false);
+         case BACKWARDS:
             return new JumpSneakTimeRecord(false, 0, false, true);
          default:
             throw new MatchException(null, null);

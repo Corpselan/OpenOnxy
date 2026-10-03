@@ -117,12 +117,12 @@ public final class Util2 {
                String var8 = var2.substring(var4, var3);
 
                var6 += switch (var5) {
-                  case BITMAP -> {
+                  case ATLAS -> {
 
                      yield var0.getFloat17(var1, var8);
                   }
-                  case ATLAS -> getFloatForSampler07(var0, var1, var8);
-                  case ICON -> getFloatForOpticalWeightRecord(var1, var8);
+                  case ICON -> getFloatForSampler07(var0, var1, var8);
+                  case BITMAP -> getFloatForOpticalWeightRecord(var1, var8);
                };
                var4 = var3;
                var5 = var7;
@@ -232,12 +232,12 @@ public final class Util2 {
                String var12 = var2.substring(var9, var3);
 
                var8 += switch (var10) {
-                  case BITMAP -> {
+                  case ATLAS -> {
 
                      yield getFloatForSampler0(var0, var1, var12, var8, var6, var7);
                   }
-                  case ATLAS -> getFloatForSampler03(var0, var1, var12, var8, var6, var7);
-                  case ICON -> getFloatForSampler08(var0, var1, var12, var8, var6, var7);
+                  case ICON -> getFloatForSampler03(var0, var1, var12, var8, var6, var7);
+                  case BITMAP -> getFloatForSampler08(var0, var1, var12, var8, var6, var7);
                };
                var9 = var3;
                var10 = var11;

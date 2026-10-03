@@ -55,11 +55,11 @@ public class DepositModule extends Module {
    private void handleEventSub119(EventSub11 var1) {
       if (MINECRAFT.thePlayer != null && MINECRAFT.theWorld != null) {
          switch (this.idleOpeningEnum) {
-            case DEPOSITING:
+            case OPENING:
 
                this.run157();
                return;
-            case OPENING:
+            case DEPOSITING:
                this.run159();
                return;
          }

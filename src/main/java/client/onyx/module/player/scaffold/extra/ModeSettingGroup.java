@@ -50,20 +50,20 @@ public class ModeSettingGroup extends SettingGroup implements MinecraftAccess {
    )
    private void handleEventSub13(EventSub13 var1) {
       switch ((ModeSettingGroup.DoNotChangeForceSprintEnum)this.valueSettingSub11.lambda15()) {
-         case NO_SPRINT_ON_PLACE:
+         case DO_NOT_CHANGE:
          default:
             break;
-         case DO_NOT_CHANGE:
+         case FORCE_SPRINT:
 
             if (var1.getForwardsBackwardsRecord().isEnabled()) {
                var1.handleBool2(true);
                return;
             }
             break;
-         case FORCE_SPRINT:
+         case FORCE_NO_SPRINT:
             var1.handleBool2(false);
             return;
-         case FORCE_NO_SPRINT:
+         case NO_SPRINT_ON_PLACE:
             if (this.bool3 && !MINECRAFT.thePlayer.willJumpThisTick()) {
                var1.handleBool2(false);
                return;

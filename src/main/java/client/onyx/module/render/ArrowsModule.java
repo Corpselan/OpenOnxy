@@ -193,10 +193,10 @@ public final class ArrowsModule extends Module {
 
    private ResourceLocation getResourceLocation2() {
       switch ((ArrowsModule.OutlineSolidEnum)this.valueSettingSub112.lambda15()) {
-         case OUTLINE:
+         case SOLID:
 
             return RESOURCE_LOCATION;
-         case SOLID:
+         case CHEVRON:
             return RESOURCE_LOCATION2;
          default:
             return RESOURCE_LOCATION3;

@@ -91,7 +91,7 @@ public class HypixelKeepYScaffoldMode extends ScaffoldMode {
       float var5 = var3.pitch2();
       float var12 = this.getFloat92();
       switch (this.getDiagonalBackEnum()) {
-         case NORMAL:
+         case DIAGONAL:
 
             boolean var15 = this.isBlockPos12(var1, var2, var12 - 135.0F, var5) || this.isBlockPos12(var1, var2, var12 + 135.0F, var5);
             boolean var17 = this.isBlockPos12(var1, var2, var12 - 180.0F, var5);
@@ -122,7 +122,7 @@ public class HypixelKeepYScaffoldMode extends ScaffoldMode {
             }
 
             return new YawPitchRecord(var9, var5);
-         case DIAGONAL:
+         case BACK:
             if (var4) {
                return new YawPitchRecord(var12 - 180.0F, var5);
             }
@@ -141,7 +141,7 @@ public class HypixelKeepYScaffoldMode extends ScaffoldMode {
 
             YawPitchRecord var10000 = new YawPitchRecord(var10002, var10003);
             return var10000;
-         case OFFSET:
+         case NORMAL:
             float var7 = var3.yaw2();
             if (this.isBlockPos12(var1, var2, var12 - 180.0F, var5)) {
                var7 = var12 - 180.0F;
@@ -152,7 +152,7 @@ public class HypixelKeepYScaffoldMode extends ScaffoldMode {
             }
 
             return new YawPitchRecord(var7, var5);
-         case BACK:
+         case OFFSET:
             YawPitchRecord var8 = YawPitchRecord.getYawPitchRecordForVec32(this.getVec318(var1, var2), MINECRAFT.thePlayer.getPositionEyes(1.0F));
             if (this.valueSettingSub94.lambda15() && !this.isBlockPos12(var1, var2, var8.yaw2(), var8.pitch2())) {
                return new YawPitchRecord(var3.yaw2(), var8.pitch2());

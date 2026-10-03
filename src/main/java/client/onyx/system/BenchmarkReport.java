@@ -138,7 +138,7 @@ public final class BenchmarkReport {
          Minecraft var0 = Minecraft.getMinecraft();
          long var1 = System.nanoTime();
          switch (menuLoadingEnum) {
-            case MEASURE:
+            case MENU:
 
                if (var0.currentScreen instanceof GuiMainMenu) {
                   bool2 = var0.gameSettings.pauseOnLostFocus;
@@ -149,7 +149,7 @@ public final class BenchmarkReport {
                   return;
                }
                break;
-            case MENU:
+            case LOADING:
                if (var0.thePlayer != null && var0.theWorld != null) {
                   var0.displayGuiScreen(null);
                   handleMinecraft5(var0);
@@ -159,14 +159,14 @@ public final class BenchmarkReport {
                   return;
                }
                break;
-            case LOADING:
+            case WARMUP:
                handleMinecraft6(var0);
                if (var1 - long_ >= LONG) {
                   handleMinecraft3(var0, var1);
                   return;
                }
                break;
-            case WARMUP:
+            case SETTLE:
                handleMinecraft6(var0);
                if (var1 - long_ >= 700000000L) {
                   LIST2.clear();
@@ -175,7 +175,7 @@ public final class BenchmarkReport {
                   return;
                }
                break;
-            case DONE:
+            case MEASURE:
                handleMinecraft6(var0);
                LIST2.add(var1 - long_2);
                long_2 = var1;

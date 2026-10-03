@@ -110,17 +110,17 @@ public class UseAccentColourSettingComponent extends SettingComponent {
    private void handleCls220(client.onyx.gui.Cls2 var1) {
       float var2 = this.getFloat187();
       switch (this.noneShadeEnum) {
-         case NONE:
+         case SHADE:
 
             this.float_5 = Math.clamp((var1.float_3 - this.float_3) / this.getFloat155(), 0.0F, 1.0F);
             this.float_6 = 1.0F - Math.clamp((var1.float_2 - var2) / 120.0F, 0.0F, 1.0F);
             this.run198();
             return;
-         case SHADE:
+         case HUE:
             this.float_7 = Math.clamp((var1.float_2 - var2) / 120.0F, 0.0F, 1.0F) * 360.0F;
             this.run198();
             return;
-         case HUE:
+         case ALPHA:
             float var3 = 1.0F - Math.clamp((var1.float_2 - var2) / 120.0F, 0.0F, 1.0F);
             this.int_ = Util2.getIntForInt3(this.valueSettingSub6.getInt7(), var3);
             this.valueSettingSub6.handleObject2(this.int_);

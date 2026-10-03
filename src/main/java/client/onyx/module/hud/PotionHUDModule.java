@@ -332,9 +332,9 @@ public final class PotionHUDModule extends Module {
          case DURATION:
 
             return Comparator.comparingInt(var0 -> var0.effect() == null ? Integer.MAX_VALUE : var0.effect().getDuration());
-         case LEVEL:
-            return Comparator.comparing(this::lambda150, String.CASE_INSENSITIVE_ORDER);
          case NAME:
+            return Comparator.comparing(this::lambda150, String.CASE_INSENSITIVE_ORDER);
+         case LEVEL:
             return Comparator.<PotionHUDModule.IdPotionRecord>comparingInt(var0 -> var0.effect() == null ? 0 : -var0.effect().getAmplifier())
                .thenComparing(this::lambda150, String.CASE_INSENSITIVE_ORDER);
          default:
